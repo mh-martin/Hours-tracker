@@ -8,6 +8,7 @@ import { useCallback, useEffect, useState } from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import axios from "axios";
+import ProjectDetails from './components/ProjectDetails';
 
 function App() {
   const [projects, setProjects] = useState([]);
@@ -36,6 +37,7 @@ function App() {
           <Route path="/" element={<Home projects={projects} />}/>
           <Route path="/addproject" element={<AddProject onProjectAdded={addProject} />}/>
           <Route path="/hours" element={<Hours />}/>
+          <Route path="/project/:id" element={<ProjectDetails />}/>
         </Routes>
         <Footer />
       </Router>
