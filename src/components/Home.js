@@ -25,7 +25,7 @@ function Home(props) {
     },
     {
       name: 'Aloituspvm',
-      selector: row => new Date(row.start_date).toDateString(),
+      selector: row => new Date(row.start_date).toISOString().slice(0,10),
       sortable: true
     },
   ]
@@ -39,7 +39,6 @@ function Home(props) {
           columns={columns}
           data={projects.filter(p => !p.completed)} />
       </div>
-      <Link to="hours">Kirjaa tunnit</Link>
     </div>
   )
 }
