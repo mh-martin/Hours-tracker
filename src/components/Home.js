@@ -1,26 +1,32 @@
 import React from 'react';
+import DataTable from 'react-data-table-component';
 import { Link } from 'react-router-dom';
 import '../App.css';
 
 function Home(props) {
-  const listProjects = props.projektit.map((projekti, index) =>
-   <li key={index.toString()}>{projekti.nimi} - {projekti.kuvaus} - {projekti.alkupaiva.toString()}</li> 
-  );
+  const columns = [
+    {
+      name: 'Projektin nimi',
+      cell: row => <Link to={`project/${row.id}`}>{row.project_name}</Link>,
+      sortable: true
+    },
+    {
+      name: 'Aloituspvm',
+      selector: row => new Date(row.start_date).toDateString(),
+      sortable: true
+    },
+  ]
+
 
   return (
     <div>
-      <h1>Home</h1>
-      {/* <nav>
-        <Link to="/">Home</Link> |{" "}
-        <Link to="addproject">Lisää projekti</Link>
-        
-      </nav> */}
-
       <h2>Avoimet projektit</h2>
-      <ul>{listProjects}</ul>
+      <div>
+        <DataTable
+          columns={columns}
+          data={props.projects.filter(p => !p.completed)} />
+      </div>
       <Link to="hours">Kirjaa tunnit</Link>
-      <h2>Päättyneet projektit</h2>
-      <p>lista</p>
     </div>
   )
 }

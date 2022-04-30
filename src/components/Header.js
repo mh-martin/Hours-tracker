@@ -6,9 +6,9 @@ function Header() {
   return (
     <div className='header'>
       <h1>Tuntikirjasovellus</h1>
-      <nav>
-        <Link to="/">Avoimet projektit</Link> |{" "}
-        <Link to="addproject">Lisää projekti</Link>
+      <nav className="navbar">
+        <Link to="/" className="link">Avoimet projektit</Link> |{" "}
+        <Link to="addproject" className="link">Lisää projekti</Link>
         
       </nav>
     </div>
