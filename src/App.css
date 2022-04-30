@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+
 }
 
 .App-logo {
@@ -35,4 +37,51 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.container {
+  flex: 1;
+  display: inline-block;
+}
+
+.inputBox {
+  margin: 8px;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 14px;
+  
+}
+
+.button {
+  color: white;
+  padding: 15px 30px;
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+  background-color: lightblue;
+  border-radius: 15px;
+}
+.label {
+  display:block;
+  text-align: left;
+}
+
+.header {
+  text-align: center;
+  background-color: lightblue;
+  font-size: 22px;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 10px;
+}
+
+.footer {
+  background-color: lightblue;
+  text-align: center;
+  font-size: 18px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  position: fixed;
+  width: 100%;
+  bottom: 0px;
+  padding: 10px;
+
 }
