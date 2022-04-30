@@ -1,9 +1,22 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import DataTable from 'react-data-table-component';
 import { Link } from 'react-router-dom';
+import axios from "axios";
 import '../App.css';
 
+
 function Home(props) {
+  const [projects, setProjects] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("/projects")
+      .then((res) => {
+        console.log(res);
+        setProjects(res.data);
+      })
+  }, []);
+
   const columns = [
     {
       name: 'Projektin nimi',
@@ -19,12 +32,12 @@ function Home(props) {
 
 
   return (
-    <div>
+    <div className='home-container'>
       <h2>Avoimet projektit</h2>
-      <div>
+      <div className='table'>
         <DataTable
           columns={columns}
-          data={props.projects.filter(p => !p.completed)} />
+          data={projects.filter(p => !p.completed)} />
       </div>
       <Link to="hours">Kirjaa tunnit</Link>
     </div>
