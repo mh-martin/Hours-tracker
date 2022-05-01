@@ -136,6 +136,20 @@ body {
   font-weight: bold;
 }
 
+.link:hover {
+  color: #E7F3EF;
+}
+
+.project-link {
+  text-decoration: none;
+  color: #093426;
+  font-weight: bold;
+}
+
+.project-link:hover {
+  color: #79BEA8;
+}
+
 .table {
   width: 90%;
   

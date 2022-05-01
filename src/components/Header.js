@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 function Header() {
   return (
     <div className='header'>
-      <h1>Tuntikirjasovellus</h1>
+      <h1>Tuntikirjaus</h1>
       <nav className="navbar">
         <ul style={{listStyleType: 'none', margin: 0, padding: 0}}>
         <li className='list'><Link to="/" className="link">Avoimet</Link></li>
