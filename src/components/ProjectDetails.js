@@ -50,8 +50,8 @@ function ProjectDetails(props) {
       <h2>{project.project_name}</h2>
       <p>Aloituspäivä {new Date(project.start_date).toISOString().slice(0,10)}</p>
       {project.est_end_date && <p>Päättymispäivä { new Date(project.est_end_date).toISOString().slice(0,10)}</p>}
-      <Link to={`/project/${id}/hours`}><button className="button">Kirjaa tunteja</button></Link>
-      <Link to={`/project/edit/${id}`}><button className="button">Muokkaa projektia</button></Link>
+      {!project.completed && <Link to={`hours`}><button className="button">Kirjaa tunteja</button></Link>}
+      {!project.completed && <Link to={`/project/edit/${id}`}><button className="button">Muokkaa projektia</button></Link>}
 
       <h2>Tehdyt tunnit</h2>
       <div className='table'>

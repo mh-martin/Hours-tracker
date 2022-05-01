@@ -20,7 +20,7 @@ function Home(props) {
   const columns = [
     {
       name: 'Projektin nimi',
-      cell: row => <Link to={`project/${row.id}`}>{row.project_name}</Link>,
+      cell: row => <Link to={`/project/${row.id}`}>{row.project_name}</Link>,
       selector: row => row.project_name,
       sortable: true
     },
