@@ -21,6 +21,7 @@ function Home(props) {
     {
       name: 'Projektin nimi',
       cell: row => <Link to={`project/${row.id}`}>{row.project_name}</Link>,
+      selector: row => row.project_name,
       sortable: true
     },
     {
@@ -37,7 +38,8 @@ function Home(props) {
       <div className='table'>
         <DataTable
           columns={columns}
-          data={projects.filter(p => !p.completed)} />
+          data={projects.filter(p => !p.completed)}
+          pagination />
       </div>
     </div>
   )
