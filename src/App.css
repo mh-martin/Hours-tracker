@@ -86,6 +86,7 @@ body {
 .button:disabled {
   cursor: default;
   background-color: grey;
+  color: white;
 }
 
 .input-container {
@@ -129,11 +130,29 @@ body {
   color: #79BEA8;
 }
 
+.nav-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
 .link {
   text-decoration: none;
   color: #79BEA8;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-weight: bold;
+}
+
+.hamburger {
+  display: none;   
+}
+
+.hamburger-nav-list {
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
 
 .link:hover {
@@ -166,4 +185,14 @@ body {
   padding-left: 5px;
   padding-right: 5px;
   display: inline-block;
+}
+
+@media only screen and (orientation: portrait) and (max-width: 600px) {
+  .nav-list {
+    display: none;
+  }
+
+  .hamburger {
+    display: block;
+  }
 }
