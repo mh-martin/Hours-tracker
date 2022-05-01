@@ -8,6 +8,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import ProjectDetails from './components/ProjectDetails';
 import EditProject from './components/EditProject';
+import Completed from './components/Completed';
 
 function App() {
   
@@ -19,7 +20,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />}/>
           <Route path="/addproject" element={<AddProject />}/>
-          <Route path="/hours" element={<Hours />}/>
+          <Route path="/completed" element={<Completed />}/>
+          <Route path="/project/:id/hours" element={<Hours />}/>
           <Route path="/project/edit/:id" element={<EditProject />}/>
           <Route path="/project/:id" element={<ProjectDetails />}/>
            

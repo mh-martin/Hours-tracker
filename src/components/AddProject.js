@@ -18,7 +18,6 @@ function AddProject() {
   function formSubmitted(event) {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
-    console.log("sdasa")
 
     axios.post('/projects', formData).then(response => {
       console.log(response)
@@ -42,7 +41,7 @@ function AddProject() {
           <label className="label">Arvioitu päättymispäivä: 
             <input type="date" name="est_end_date" className="inputBox" value={estEndDate} onChange={(event) => setEstEndDate(event.target.value)}></input>
           </label>
-          <button className="button" disabled={isInvalid()}>Submit</button>
+          <button className="button" disabled={isInvalid()}>Lisää projekti</button>
         </div> 
       </form>
     </div>

@@ -1,55 +1,63 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { useParams, useNavigate } from 'react-router-dom'
+import axios from 'axios';
+
 
 function Hours() {
+  let {id} = useParams();
+  const [projectName, setProjectName] = useState();
+  const navigate = useNavigate();
+  const [personName, setPersonName] = useState("");
+  const [hours, setHours] = useState("");
+  const [classification, setClassification] = useState("");
+
+  useEffect(() => {
+    axios
+      .get(`/projects/${id}`)
+      .then((res) => {
+        console.log(res);
+        setProjectName(res.data.project_name);
+      })
+  }, [id]);
+
+  function isInvalid() {
+    return personName === '' ||
+           hours === '' ||
+           classification === '';
+  }
+
+  function formSubmitted(event) {
+    event.preventDefault();
+    const formData = new FormData(event.currentTarget);
+
+    axios.post(`/projects/${id}/hours`, formData).then(response => {
+      console.log(response)
+      navigate(`/project/${id}`)
+    }).catch(response => {
+      console.log(response)
+    })
+  }
+
+
   return (
-    <div>
-      <h1>Selaa ja kirjaa tunnit Projekti XYZ</h1>
+    <div className='App'>
+      <div className='home-container'>
+      <h2>Kirjaa työtunnit projektiin {projectName}</h2>
 
-      <button>Lisää tunteja</button>
-      <form>
-      <div>
-        <label>Nimi:
-          <input placeholder="nimi"></input>
+      <form onSubmit={formSubmitted}>
+        <label className="label">Nimi:
+          <input type="text" name="person_name" className='inputBox' value={personName} onChange={(event) => setPersonName(event.target.value)}></input>
         </label>
-        <label>Päivämäärä
-          <input type="date"></input>
+        <label className="label">Tehdyt tunnit:
+          <input type="number" name="hours" step="0.25" placeholder="1.0" className='inputBox' value={hours} onChange={(event) => setHours(event.target.value)}></input>
         </label>
-        <label>Työtunnit
-          <input type="number"></input>
+        <label className="label"> Työtehtävä:
+          <input type="text" className='inputBox' name="classification" value={classification} onChange={(event) => setClassification(event.target.value)}></input>
         </label>
-        <label> Työtehtävä:
-        <select name="tehtava" id="tehtava">
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-        </select>
-        </label>
-      </div>
+        <input type="hidden" name="project_id" value={id}></input>
+        <button className='button' disabled={isInvalid()}>Kirjaa tunnit</button>
       </form>
-
-
-
-      <table>
-        <tr>
-          <th>Nimi</th>
-          <th>Päivä</th>
-          <th>Tunnit</th>
-          <th>Tehtävä</th>
-        </tr>
-        <tr>
-          <td>Erkki Esimerkki</td>
-          <td>1.1.2022</td>
-          <td>7,5</td>
-          <td>Join viinaa</td>
-        </tr>
-        <tr>
-          <td>Erkki Esimerkki</td>
-          <td>2.1.2022</td>
-          <td>7,5</td>
-          <td>Join viinaa</td>
-        </tr>
-      </table>
+    </div>
     </div>
   )
 }
