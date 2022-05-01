@@ -4,7 +4,7 @@ import axios from 'axios';
 
 
 function Hours() {
-  let {id} = useParams();
+  let { id } = useParams();
   const [projectName, setProjectName] = useState();
   const navigate = useNavigate();
   const [personName, setPersonName] = useState("");
@@ -22,8 +22,8 @@ function Hours() {
 
   function isInvalid() {
     return personName === '' ||
-           hours === '' ||
-           classification === '';
+      hours === '' ||
+      classification === '';
   }
 
   function formSubmitted(event) {
@@ -41,23 +41,26 @@ function Hours() {
 
   return (
     <div className='App'>
-      <div className='home-container'>
       <h2>Kirjaa työtunnit projektiin {projectName}</h2>
 
       <form onSubmit={formSubmitted}>
-        <label className="label">Nimi:
-          <input type="text" name="person_name" className='inputBox' value={personName} onChange={(event) => setPersonName(event.target.value)}></input>
-        </label>
-        <label className="label">Tehdyt tunnit:
-          <input type="number" name="hours" step="0.25" placeholder="1.0" className='inputBox' value={hours} onChange={(event) => setHours(event.target.value)}></input>
-        </label>
-        <label className="label"> Työtehtävä:
-          <input type="text" className='inputBox' name="classification" value={classification} onChange={(event) => setClassification(event.target.value)}></input>
-        </label>
-        <input type="hidden" name="project_id" value={id}></input>
-        <button className='button' disabled={isInvalid()}>Kirjaa tunnit</button>
+        <div className='container'>
+          <div className="input-container">
+            <label className="label">Nimi:</label>
+            <input type="text" name="person_name" className='inputBox' value={personName} onChange={(event) => setPersonName(event.target.value)}></input>
+          </div>
+          <div className="input-container">
+            <label className="label">Tehdyt tunnit:</label>
+            <input type="number" name="hours" step="0.25" className='inputBox' value={hours} onChange={(event) => setHours(event.target.value)}></input>
+          </div>
+          <div className="input-container">
+            <label className="label">Työtehtävä:</label>
+            <input type="text" className='inputBox' name="classification" value={classification} onChange={(event) => setClassification(event.target.value)}></input>
+          </div>
+          <input type="hidden" name="project_id" value={id}></input>
+          <button className='button' disabled={isInvalid()}>Kirjaa tunnit</button>
+        </div>
       </form>
-    </div>
     </div>
   )
 }

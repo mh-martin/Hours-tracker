@@ -44,8 +44,10 @@ body {
 }
 
 .container {
-  flex: 1;
-  display: inline-block;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
 }
 
 .inputBox {
@@ -53,7 +55,16 @@ body {
   padding: 10px;
   border-radius: 10px;
   font-size: 14px;
-  
+  flex: 1 auto;
+  width: 40%;
+}
+
+.inputCheckbox {
+  width: 40%;
+  flex: 1 auto;
+  margin: 15px;
+  height: 25px;
+  align-self: baseline;
 }
 
 .button {
@@ -64,6 +75,7 @@ body {
   font-size: 16px;
   background-color: #79BEA8;
   border-radius: 15px;
+  margin-top: 20px;
 }
 
 .button:hover {
@@ -76,9 +88,18 @@ body {
   background-color: grey;
 }
 
+.input-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 500px;
+  max-width: 90%;
+}
+
 .label {
-  display:block;
   text-align: left;
+  flex: 1 auto;
+  width: 40%;
 }
 
 .header {
@@ -92,12 +113,13 @@ body {
 .footer {
   background-color: #093426;
   text-align: center;
-  font-size: 18px;
+  font-size: 14px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   position: fixed;
   width: 100%;
   bottom: 0px;
   padding: 10px;
+  color: #79BEA8;
 }
 
 .navbar {
@@ -124,4 +146,10 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.list {
+  padding-left: 5px;
+  padding-right: 5px;
+  display: inline-block;
 }

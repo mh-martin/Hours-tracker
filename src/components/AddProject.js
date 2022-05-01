@@ -11,8 +11,8 @@ function AddProject() {
 
   function isInvalid() {
     return projectName === '' ||
-           startDate === '' ||
-           estEndDate === '';
+      startDate === '' ||
+      estEndDate === '';
   }
 
   function formSubmitted(event) {
@@ -32,17 +32,20 @@ function AddProject() {
       <h1>Lisää projekti</h1>
       <form onSubmit={formSubmitted}>
         <div className="container">
-          <label className="label">Projektin nimi: 
-            <input type="text" name="project_name" className="inputBox" value={projectName} onChange={(event) => setProjectName(event.target.value)}/>
-          </label>
-          <label className="label">Aloituspäivä: 
+          <div className='input-container'>
+            <label className="label">Projektin nimi:</label>
+            <input type="text" name="project_name" className="inputBox" value={projectName} onChange={(event) => setProjectName(event.target.value)} />
+          </div>
+          <div className='input-container'>
+            <label className="label">Aloituspäivä:</label>
             <input type="date" name="start_date" className="inputBox" value={startDate} onChange={(event) => setStartDate(event.target.value)}></input>
-          </label>
-          <label className="label">Arvioitu päättymispäivä: 
+          </div>
+          <div className='input-container'>
+            <label className="label">Arvioitu päättymispäivä:            </label>
             <input type="date" name="est_end_date" className="inputBox" value={estEndDate} onChange={(event) => setEstEndDate(event.target.value)}></input>
-          </label>
+          </div>
           <button className="button" disabled={isInvalid()}>Lisää projekti</button>
-        </div> 
+        </div>
       </form>
     </div>
   )
